@@ -5,9 +5,6 @@ from pygame import mixer
 import math
 import random
 
-# BIRTHDAY GIFT BHARAT
-
-
 # Intialize the pygame
 pygame.init()
 
@@ -32,22 +29,6 @@ meoImage = random.choice(meoType)
 meoX = 0
 meoY = 0
 meoY_change = 2
-
-
-# background = pygame.image.load('background.png')
-# meoType = []
-# meoX = []
-# meoY = []
-# meoY_change = []
-# num_of_meos = 20
-# for i in range(num_of_meos):
-#     meoImage = pygame.image.load('white dot.jpg')
-#     meo2Image = pygame.image.load('white dot 2.jpg')
-#     meosImage = [meoImage, meo2Image]
-#     meosType = random.choice(meosImage)
-#     meoX.append(random.randint(0, 600))
-#     meoY_change.append(4)
-
 
 def fall_meos(x, y):
     meoImage = random.choice(meoType)
@@ -100,8 +81,8 @@ pygame.display.set_caption("SPACE INVADERS.SV")
 icon = pygame.image.load('game_assets/game_images/spaceship (1).png')
 pygame.display.set_icon(icon)
 
-# shipImage = pygame.image.load('spaceship (1).png')
-# shipImage = pygame.image.load('spaceship (3).png')
+# shipImage = pygame.image.load('game_assets/game_images/spaceship (1).png')
+# shipImage = pygame.image.load('game_assets/game_images/spaceship (3).png')
 shipImage = pygame.image.load('game_assets/game_images/spaceship (4).png')
 shipX = 262
 shipY = 635
@@ -180,19 +161,15 @@ def fire_bullet(x, y):
     global bullet_state
     bullet_state = "fire"
     bulletImage = random.choice(bulletType)
-    # screen.blit(bulletImage, (x + 16, y + 10))
     screen.blit(bulletImage, (x - 2, y))
     screen.blit(bulletImage, (x + 34, y))
 
-
-# def isCollision(enemyX, enemyY, bulletX, bulletY):
 def isCollision(ufoX, ufoY, bulletX, bulletY):
     distance = math.sqrt(math.pow(ufoX - bulletX, 2) + (math.pow(ufoY - bulletY, 2)))
     if distance < 50:
         return True
     else:
         return False
-1
 
 # Game Loop
 running = True
@@ -262,17 +239,7 @@ while running:
             ufoX_change[i] = 0.15
         elif ufoX[i] >= 536:
             ufoX_change[i] = -0.15
-        # if ufoY[i] >= 600:
-        #     ufoY[i] = 0
-
-        # ufoX[i] += ufoX_change[i]
-        # if ufoX[i] <= 0:
-        #     ufoX_change[i] = 0.15
-        #     ufoY[i] += ufoY_change[i]
-        # elif ufoX[i] >= 535:
-        #     ufoX_change[i] = -0.15
-        #     ufoY[i] += ufoY_change[i]
-
+        
         # Collision
         collision = isCollision(ufoX[i], ufoY[i], bulletX, bulletY)
         if collision:
@@ -298,3 +265,4 @@ while running:
     ship(shipX, shipY)
     show_score(textX, testY)
     pygame.display.update()
+    
